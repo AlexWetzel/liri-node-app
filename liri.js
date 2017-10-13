@@ -30,14 +30,19 @@ function getTwitter(){
 	});
 }
 function getSpotify(){	
-	if (mediaQuery === undefined){
-		mediaQuery = "The Sign"
-	}
+	
 	var params = {
 		type: 'track',
 		query: mediaQuery,
 		limit: 1
 	}
+
+	if (mediaQuery === undefined){
+		params.query = "The Sign" && "Ace of Base";
+		// params.artists = "Ace of Base"
+		// q=track:the%20sign%20artist:abba&type=album
+	}
+
 	spotify.search(params, function(error, data) {
 		if (error) {
 	  		return console.log('Error occurred: ' + err);
